@@ -96,5 +96,13 @@ public class program2 {
 	            System.out.println(ans2);
 	            System.out.println(ans3);
 	        }
+	        else if (tc == 5)
+	        {
+	            System.out.println(ans);
+	            System.out.println(ans1);
+	            System.out.println(ans2);
+	            System.out.println(ans3);
+	            System.out.println(ans4);
+	        }
 	    }
 }
