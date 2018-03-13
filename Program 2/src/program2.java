@@ -104,5 +104,14 @@ public class program2 {
 	            System.out.println(ans3);
 	            System.out.println(ans4);
 	        }
+	        else if (tc == 6)
+	        {
+	            System.out.println(ans);
+	            System.out.println(ans1);
+	            System.out.println(ans2);
+	            System.out.println(ans3);
+	            System.out.println(ans4);
+	            System.out.println(ans5);
+	        }
 	    }
 }
