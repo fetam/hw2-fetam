@@ -113,5 +113,15 @@ public class program2 {
 	            System.out.println(ans4);
 	            System.out.println(ans5);
 	        }
+	        else if (tc == 7)
+	        {
+	            System.out.println(ans);
+	            System.out.println(ans1);
+	            System.out.println(ans2);
+	            System.out.println(ans3);
+	            System.out.println(ans4);
+	            System.out.println(ans5);
+	            System.out.println(ans6);
+	        }
 	    }
 }
