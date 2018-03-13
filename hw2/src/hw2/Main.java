@@ -2,140 +2,135 @@ package hw2;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {	
-	public static void main(String[] args) throws IOException{
-		
-		inventory Inv = new Inventory("inventory.txt");		
-		customers Cust = new Customers("customers.txt");
-		Menu m = new Menu();
-		Scanner in1 = new Scanner(System.in);
-		int UC = 0;
-		
-		
-
-		 while(true){
-			System.out.println();
-			m.mainMenu();
-			UC = in1.nextInt();
-			String UserType ="";
-			
-			System.out.println();
-			if(UC == 1){
-				boolean match = false;
-				while(match == false){
-					System.out.print("Please input your user id: ");
-					String ID = in1.next();
-					System.out.print("Please input password: ");
-					String Password = in1.next();
-					
-					for(int i=0;i<Cust.nm;i++){
-						if(ID.equals(Cust.members[i].id)){
-							if(Password.equals(Cust.members[i].pw)){
-							match = true;
-							UserType = "Normal";
-							}
-						}
-					}
-					
-					if(ID.equals("admin")){
-						if(Password.equals("adminpass")){
-							match = true;
-							UserType = "Admin";
-						}
-					}
-					if(match==false){
-						System.out.println("Log In and Password do not match");
-					}
-				}
-				
-				
-				if(UserType.equals("Normal")){
-					while(true){
-						System.out.println();
-						m.LogInDoneMenu();
-						UC = in1.nextInt();
-						if(UC == 1){
-							Inv.displayCars();
-						}
-						else if(UC == 2){
-							m.SortCarsMenu();
-							UC = in1.nextInt();
-							if(UC == 1){
-								m.SortByVin();
-							}
-							else if(UC == 2){
-								m.SortByBrand();
-							}
-							else if(UC == 3){
-								m.SortByModel();
-							}
-							else if(UC == 4){
-								m.SortByYear();
-							}
-							else if(UC == 5){
-								m.SortByMileage();
-							}	
-							else if(UC == 6){
-								m.SortByPrice();
-							}
-							else if(UC == 7){
-								m.SortByColor();	
-							}
-
-						}
-						else if(UC == 3){
-							break;
-						}
-						
-					}
-				}
-				else if(UserType.equalsIgnoreCase("Admin")){
-					while(true){
-						System.out.println();
-						m.AdminMenu();
-						UC = in1.nextInt();
-						if(UC == 1){
-							Inv.displayCars();
-						}
-						else if(UC == 2){
-							m.AddCar();
-							Inv = new Inventory("inventory.txt");
-						}
-						else if(UC == 3){
-							m.DeleteCar();
-						}
-						else if(UC == 4){
-							m.UpdateCar();
-						}
-						else if(UC == 5){
-							Cust.displayCustomers();
-						}	
-						else if(UC == 6){
-							m.SignUpMenu();
-							Cust = new Customers("customers.txt");	
-						}
-						else if(UC == 7){
-							m.DeleteUser();		
-						}	
-						else if(UC == 8){
-							m.UpdateUser();
-						}
-						else if(UC == 9){
-							break;
-						}
-					}
-				}
-
-			}
-			else if(UC == 2){
-				m.SignUpMenu();
-				Cust = new Customers("customers.txt");	
-			}
-			else if(UC == 3){
-				break;
-			}
-		}
-		in1.close();
-		
+public class Main {			
+		public static void main(String[] args) throws IOException {
+	        
+	        Menu m = new Menu();
+	        
+	        Customers cu = new Customers("customers.txt");
+	        Inventory iv = new Inventory("inventory.txt");
+	        Scanner in = new Scanner(System.in);
+	        int choice = 0;
+	        
+	        while (true) {
+	            
+	            m.welcome();
+	            System.out.print("Please input: ");
+	            choice = in.nextInt();
+	            
+	            if (choice == 1) {
+	                String id;
+	                String pass;
+	                int found;
+	                System.out.print("Please input your user id: ");
+	                id = in.next();
+	                System.out.print("Please input your password: ");
+	                pass = in.next();
+	                
+	                found = cu.findUser(id, pass);
+	                
+	                if (found == 1) {
+	                    cu.adminName();
+	                    do {
+	                        m.wBackAdmin();
+	                        System.out.print("\nPlease input: ");
+	                        choice = in.nextInt();
+	                        
+	                        if (choice == 1)
+	                            iv.displayCars();
+	                        else if (choice == 2)
+	                            iv.addCar();
+	                        else if (choice == 3)
+	                            iv.deleteCar();
+	                        else if (choice == 4) {
+	                            m.adminSub4();
+	                            System.out.print("\nPlease input: ");
+	                            iv.updateCar(choice);
+	                        }
+	                        else if (choice == 5)
+	                            cu.displayCustomers();
+	                        else if (choice == 6)
+	                            cu.addUser();
+	                        else if (choice == 7)
+	                            cu.deleteUser();
+	                        else if (choice == 8) {
+	                            m.adminSub8();
+	                            System.out.print("\nPlease input: ");
+	                            cu.updateUser(choice);
+	                        }
+	                        else if (choice == 9)
+	                            break;
+	                        else
+	                            System.out.println("Not a valid option");
+	                        
+	                    } while (choice != 9);
+	                }
+	                else if (found == 2) {
+	                    
+	                    cu.usrName(id);
+	                    do {
+	                        
+	                        m.wBackUser();
+	                        choice = in.nextInt();
+	                        
+	                        if (choice == 1) {
+	                            int usrC;
+	                            m.userSub1();
+	                            System.out.print("\nPlease input: ");
+	                            usrC = in.nextInt();
+	                            if (usrC == 1 || usrC == 2)
+	                                iv.usrDisplayCars(usrC);
+	                            else
+	                                System.out.println("Incorrect choice");
+	                        }
+	                        
+	                        else if (choice == 2) {
+	                            m.userSub2();
+	                            System.out.print("\nPlease input: ");
+	                            choice = in.nextInt();
+	                            
+	                            if (choice == 1)
+	                                iv.sortVin();
+	                            else if (choice == 2)
+	                                iv.sortBrand();
+	                            else if (choice == 3)
+	                                iv.sortModel();
+	                            else if (choice == 4)
+	                                iv.sortYear();
+	                            else if (choice == 5)
+	                                iv.sortMile();
+	                            else if (choice == 6)
+	                                iv.sortPrice();
+	                            else if (choice == 7)
+	                                iv.sortColor();
+	                            else
+	                                System.out.println("Incorrect choice");
+	                        }
+	                        else if (choice == 3)
+	                            break;
+	                        else
+	                            System.out.println("Not a valid option");
+	                        
+	                    } while (choice != 3);
+	                }
+	                
+	                else if (found == 0)
+	                    System.out.println("Combination does not exist");
+	                else if (found == -1)
+	                    System.out.println("Combination does not exist");
+	                else
+	                    System.out.println("Combination does not exist");
+	            }
+	            
+	            else if (choice == 2) {
+	               cu.addUser(); 
+	            }
+	            
+	            else if (choice == 3) {
+	                break;
+	            }
+	        }
+	        
+	        System.out.println("Thank you!");
+	  }
 	}
-}
