@@ -75,5 +75,14 @@ public class program2 {
 	            sc.nextLine();
 	        }
 	        System.out.println("Output:");
+	        
+	        if (tc == 1)
+	            System.out.println(ans);
+	        else if (tc == 2)
+	        {
+	            System.out.println(ans);
+	            System.out.println(ans1);
+	        }
+
 	    }
 }
