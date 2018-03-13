@@ -89,5 +89,12 @@ public class program2 {
 	            System.out.println(ans1);
 	            System.out.println(ans2);
 	        }
+	        else if (tc == 4)
+	        {
+	            System.out.println(ans);
+	            System.out.println(ans1);
+	            System.out.println(ans2);
+	            System.out.println(ans3);
+	        }
 	    }
 }
