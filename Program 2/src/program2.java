@@ -83,6 +83,11 @@ public class program2 {
 	            System.out.println(ans);
 	            System.out.println(ans1);
 	        }
-
+	        else if (tc == 3)
+	        {
+	            System.out.println(ans);
+	            System.out.println(ans1);
+	            System.out.println(ans2);
+	        }
 	    }
 }
