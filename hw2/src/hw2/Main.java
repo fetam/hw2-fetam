@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		
 		inventory Inv = new Inventory("inventory.txt");		
-		customers Cust = new Customers("customer.txt");
+		customers Cust = new Customers("customers.txt");
 		Menu m = new Menu();
 		Scanner in1 = new Scanner(System.in);
 		int UC = 0;
@@ -112,7 +112,7 @@ public class Main {
 						}	
 						else if(UC == 6){
 							m.SignUpMenu();
-							Cust = new Customers("customer.txt");	
+							Cust = new Customers("customers.txt");	
 						}
 						else if(UC == 7){
 							m.DeleteUser();		
@@ -129,7 +129,7 @@ public class Main {
 			}
 			else if(UC == 2){
 				m.SignUpMenu();
-				Cust = new Customers("Customer.txt");	
+				Cust = new Customers("customers.txt");	
 			}
 			else if(UC == 3){
 				break;
