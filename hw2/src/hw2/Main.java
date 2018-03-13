@@ -132,5 +132,6 @@ public class Main {
 	        }
 	        
 	        System.out.println("Thank you!");
+	        in.close();
 	  }
 	}

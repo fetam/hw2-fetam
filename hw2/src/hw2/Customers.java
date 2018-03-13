@@ -217,4 +217,3 @@ public class Customers {
 	        outF_CU.close();
 	    }
 	}  
-}

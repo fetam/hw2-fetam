@@ -369,10 +369,8 @@ public class Inventory {
 	                outF_IV.println("N");
 	            }
 	        }
-	        
 	        fw_IV.close();
 	        outF_IV.close();
 	    }
 	    
 	}
-}
