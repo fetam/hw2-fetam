@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {	
 	public static void main(String[] args) throws IOException{
 		
-		Inventory Inv = new Inventory("Inventory.txt");		
-		Customers Cust = new Customers("Customer.txt");
+		inventory Inv = new Inventory("inventory.txt");		
+		customers Cust = new Customers("customer.txt");
 		Menu m = new Menu();
 		Scanner in1 = new Scanner(System.in);
 		int UC = 0;
@@ -99,7 +99,7 @@ public class Main {
 						}
 						else if(UC == 2){
 							m.AddCar();
-							Inv = new Inventory("Inventory.txt");
+							Inv = new Inventory("inventory.txt");
 						}
 						else if(UC == 3){
 							m.DeleteCar();
@@ -112,7 +112,7 @@ public class Main {
 						}	
 						else if(UC == 6){
 							m.SignUpMenu();
-							Cust = new Customers("Customer.txt");	
+							Cust = new Customers("customer.txt");	
 						}
 						else if(UC == 7){
 							m.DeleteUser();		
